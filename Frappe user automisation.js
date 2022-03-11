@@ -18,7 +18,7 @@ frappe.ui.form.on("User",{
 		    else{
 		        if(first_name.match(allowed_symbols) && middle_name.match(allowed_symbols) && last_name.match(allowed_symbols)){
     	            frm.set_value("email", first_name+"."+middle_name+last_name+email_extension)
-    	            frm.set_value("username", first_name+"."+last_name);
+    	            frm.set_value("username", first_name+"."+middle_name+last_name);
 		        }
 		        else {
 		            alert("Only letters are allowed!");
