@@ -11,8 +11,8 @@ frappe.ui.form.on("User",{
 		frm.add_custom_button(__('Generate Email and Username'), () =>{
 		    var first_name = frm.doc.first_name.toLowerCase();
 		    var middle_name = (frm.doc.middle_name || '').toLowerCase().replace(/\s/g, '');
-		    var last_name = (frm.doc.last_name).toLowerCase();
-		    if(last_name === ''){
+		    var last_name = (frm.doc.last_name).toLowerCase().replace(/\s/g, '');
+		    if(last_name === ""){
 		        alert("Last Name is not allowed to be empty!");
 		    }
 		    else{
