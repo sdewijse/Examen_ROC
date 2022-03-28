@@ -2,7 +2,7 @@ frappe.ui.form.on("User",{
 	refresh: function(frm) {
 		// Dit wordt in een variabele opgeslagen voor later gebruik.
 		var email_extension = "@nextatwork.nl";
-		var allowed_symbols = /^[a-zA-Z]*$/;
+		var allowed_symbols = /^[a-zA-Z\-]*$/;
 		
 		// In dit stukje code wordt via JavaScript de waardes van email en username ingevuld gebaseerd op de
 		// voornaam, tussenvoegsel en achternaam ingevuld door de gebruiker, hierna moet op de knop
