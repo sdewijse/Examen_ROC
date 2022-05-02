@@ -3,6 +3,7 @@ frappe.ui.form.on("User",{
 		// Dit wordt in een variabele opgeslagen voor later gebruik.
 		var email_extension = "@nextatwork.nl";
 		var allowed_symbols = /^[a-zA-Z\-]*$/;
+		var character_set = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789[]{}()@#$%^&!?"
 		
 		// In dit stukje code wordt via JavaScript de waardes van email en username ingevuld gebaseerd op de
 		// voornaam, tussenvoegsel en achternaam ingevuld door de gebruiker, hierna moet op de knop
@@ -25,5 +26,24 @@ frappe.ui.form.on("User",{
     		    }
 		    }
 		});
+		
+
+		// Hieronder wordt een knop aangemaakt die een tijdelijk wachtwoord kan genereren. Door de character set
+		// te randomizen en er acht tekens uit te pakken kan men een willekeurig wachtwoord opstellen voor tijdelijk gebruik.
+		// Het wachtwoord wordt als password in het veld gezet en als plaintext in de console om deze aan de gebruiker
+		// door te kunnen geven. 
+		frm.add_custom_button(__('Generate random password'), () =>{
+		    var length = 8,
+            passWord = "";
+        for (var i = 0, n = character_set.length; i < length; ++i) {
+            passWord += character_set.charAt(Math.floor(Math.random() * n));
+        }
+        frm.set_value("new_password", passWord);
+        console.log(passWord);
+		});
+		
+		// Om vervolgens de velden "Email" en "Username" grijs te maken zodat deze alleen door de knop
+		// aangepast kunnen worden moet men op de puntjes rechtsboven, naast "opslaan" klikken, het doctype
+		// aanpassen en dan de velden voor "Email" en "Username" van "Data" naar "Read-only" veranderen.
 	}
 });
